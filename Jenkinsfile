@@ -1,7 +1,10 @@
 pipeline {
-    DOCKER_ID = "m0ph"
-    DOCKER_IMAGE = "front-end"
-    DOCKER_TAG = "${BUILD_ID}"
+    environment {
+        DOCKER_ID = "m0ph"
+        DOCKER_IMAGE = "front-end"
+        DOCKER_TAG = "${BUILD_ID}"
+    }
+
 }
 
 agent any
