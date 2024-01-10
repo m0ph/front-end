@@ -12,7 +12,7 @@ agent any
                 script {
                     sh '''
                     docker rm -f $DOCKER_IMAGE
-                    docker build -t $DOCKER_ID/$DOCKER_IMAGE:DOCKER_TAG .
+                    docker build -t $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG .
                     '''
                 }
             }
