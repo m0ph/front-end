@@ -1,0 +1,29 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend-deployment
+  namespace: dev
+  labels: 
+    app: frontend-deployment
+spec:
+  selector:
+    matchLabels:
+      app: frontend-deployment
+  replicas: 3
+  strategy: 
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: frontend-deployment
+    spec:
+      containers:
+        - name: frontend
+          image: weaveworksdemos/front-end:0.3.12
+          ports:
+            - containerPort: 8079
+          securityContext:
+            capabilities:
+              drop: 
+                - all
+
