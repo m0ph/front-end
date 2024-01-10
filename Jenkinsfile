@@ -43,5 +43,20 @@ agent any
                 '''
             }
         }
+        stage('Deploy dev') {
+            environment {
+                KUBECONFIG = credentials("config")
+            }
+        steps {
+            script {
+                sh '''
+                rm -Rf .kube
+                mkdir .kube
+                cat $KUBECONFIG > .kube/config
+                kubectl apply -f manifests
+                '''
+                }
+            }
+        }    
     }
 }

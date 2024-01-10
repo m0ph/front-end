@@ -26,4 +26,3 @@ spec:
             capabilities:
               drop: 
                 - all
-
