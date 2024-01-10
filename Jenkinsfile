@@ -38,6 +38,8 @@ agent any
                 docker login -u $DOCKER_ID -p $DOCKER_PASS
                 docker push $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
                 docker push $DOCKER_ID/$DOCKER_IMAGE:latest
+                docker image rm $DOCKER_ID/$DOCKER_IMAGE:$DOCKER_TAG
+                docker image rm $DOCKER_ID/$DOCKER_IMAGE:latest
                 '''
             }
         }
