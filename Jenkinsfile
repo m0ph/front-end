@@ -17,5 +17,16 @@ agent any
                 }
             }
         }
+        stage('Run and test') {
+            steps {
+                sh '''
+                docker network create $BUILD_TAG
+            	docker run -d --name front-end --rm --network $BUILD_TAG $DOCKER_ID/$DOCKER_IMAGE:DOCKER_TAG
+                docker run -d --name curl --rm --network --network $BUILD_TAG curlimages/curl:latest -L -v http://front-end:8079
+                docker stop front-end
+                docker network rm $BUILD_TAG
+                '''
+            }
+        }
     }
 }
